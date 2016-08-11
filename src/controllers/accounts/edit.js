@@ -60,6 +60,10 @@ editController.email = function(req, res, next) {
 	renderRoute('email', req, res, next);
 };
 
+editController.bnet = function(req, res, next) {
+    renderRoute('bnet', req, res, next);
+};
+
 function renderRoute(name, req, res, next) {
 	getUserData(req, next, function(err, userData) {
 		if (err) {
@@ -79,6 +83,16 @@ function renderRoute(name, req, res, next) {
 			{text: '[[user:edit]]', url: '/user/' + userData.userslug + '/edit'},
 			{text: '[[user:' + name + ']]'}
 		]);
+
+        process.stdout.write(JSON.stringify(userData,null,4))
+
+        if (name === 'bnet') {
+
+            userData.characters = userData.bnetData.characters.filter(function(c) {
+                return c.realm === 'Soulflayer';
+            });
+
+        }
 
 		res.render('account/edit/' + name, userData);
 	});
