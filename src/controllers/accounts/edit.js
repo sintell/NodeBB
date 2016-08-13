@@ -84,12 +84,14 @@ function renderRoute(name, req, res, next) {
 			{text: '[[user:' + name + ']]'}
 		]);
 
-        process.stdout.write(JSON.stringify(userData,null,4))
-
         if (name === 'bnet') {
 
             userData.characters = userData.bnetData.characters.filter(function(c) {
                 return c.realm === 'Soulflayer';
+            }).sort(function(a, b) {
+                return a.level > b.level ? -1 : 1;
+            }).sort(function(a, b) {
+                return a.lastModified > b.lastModified ? -1 : 1;
             });
 
         }
