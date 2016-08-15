@@ -197,6 +197,7 @@ function start() {
 			if (nconf.get('isPrimary') === 'true' && !nconf.get('jobsDisabled')) {
 				require('./src/notifications').init();
 				require('./src/user').startJobs();
+				require('./src/guild/guild').startJobs();
 			}
 
 			webserver.listen();
