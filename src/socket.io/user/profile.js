@@ -5,6 +5,7 @@ var async = require('async');
 var user = require('../../user');
 var meta = require('../../meta');
 var events = require('../../events');
+var guild = require('../../guild/guild');
 
 module.exports = function(SocketUser) {
 
@@ -17,6 +18,9 @@ module.exports = function(SocketUser) {
 			function (next) {
 				isAdminOrSelfAndPasswordMatch(socket.uid, data, next);
 			},
+            function(next) {
+                guild.setMainCharacter(socket.uid,data.username, next);
+            },
 			function (next) {
 				SocketUser.updateProfile(socket, data, next);
 			}
