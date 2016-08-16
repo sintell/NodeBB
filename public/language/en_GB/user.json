@@ -42,6 +42,9 @@
 	"change_picture": "Change Picture",
 	"change_username": "Change Username",
 	"change_email": "Change Email",
+	"change_bnet": "Change Bnet settings",
+	"main_character": "Main character",
+    "change_bnet_account": "Make changes",
 	"edit": "Edit",
 	"edit-profile": "Edit Profile",
 	"default_picture": "Default Icon",
@@ -61,6 +64,7 @@
 	"username_taken_workaround": "The username you requested was already taken, so we have altered it slightly. You are now known as <strong>%1</strong>",
 	"password_same_as_username": "Your password is the same as your username, please select another password.",
 	"password_same_as_email": "Your password is the same as your email, please select another password.",
+	"email_can_not_be_empty": "Your email can not be empty.",
 
 	"upload_picture": "Upload picture",
 	"upload_a_picture": "Upload a picture",
