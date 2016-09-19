@@ -48,6 +48,17 @@ function composeBnetRequest(endpoint, fields) {
                             winston.error(err);
                             return callback(err);
                         }
+                        if (!guildInfo) {
+                            const err = new Error('No guild info');
+                            winston.error(err);
+                            return callback(err);
+                        }
+
+                        if (!guildInfo.members) {
+                            const err = new Error('No members in guild info');
+                            winston.error(err);
+                            return callback(err);
+                        }
                         response.members = guildInfo.members.map((m) => {
                             return {name: m.character.name,
                                 class: {id: m.class, name: resources.classes[m.character.class]},
