@@ -6,6 +6,8 @@ const db = require('../database');
 const user = require('../user');
 const winston = require('winston');
 
+LOWEST_RANK = 9;
+
 
 (function(Guild) {
     'use strict';
@@ -29,6 +31,13 @@ const winston = require('winston');
                     }).sort((a, b) => {
             		    return a.level > b.level ? -1 : 1;
             		}).map((c) => {
+                        if (!guildMates[c.name]) {
+                            winston.error(`No match for ${c.name} in guildMates\n ${JSON.stringify(c, null, 4)}`);
+                            c.rank = LOWEST_RANK;
+                            c.race = undefined;
+                            c.class = undefined;
+                            return c;
+                        }
                         c.rank = guildMates[c.name].rank;
                         c.race = guildMates[c.name].race;
                         c.class = guildMates[c.name].class;
