@@ -31,7 +31,7 @@ GUILD_GROUP_NAME = 'Snails';
         		if (characters) {
         		    var data = characters.filter((c) => {
                         // throw away all characters that not in guild
-                        if (!(c.guildRealm + ':' + c.guild).toLowerCase() === process.env.BNET_GUILD.toLowerCase()) {
+                        if (!((c.guildRealm + ':' + c.guild).toLowerCase() === process.env.BNET_GUILD.toLowerCase())) {
                             return false;
                         }
                         // check if character is really a member of a guild
